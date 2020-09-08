@@ -22,14 +22,14 @@ def send_request(
 ) -> str:
     """
     Send API-request to service
-    :param method: request method: GET, POST or DELETE
+    :param method: request method: GET, POST, PUT or DELETE
     :param url: request url
-    :param data: POST-request data
+    :param data: POST- or PUT-request data
     """
 
     method = method.lower()
 
-    if method not in ('get', 'post', 'delete'):
+    if method not in ('get', 'post', 'put', 'delete'):
         raise ValueError(f'Unsupported method "{method}"')
 
     response = getattr(requests, method)(

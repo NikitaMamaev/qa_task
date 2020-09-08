@@ -1,2 +1,8 @@
+
+
+from utils.api_requests import send_request
+
+
 def test_test():
-    assert abs(-42) == 42, "Should be absolute value of a number"
+    response = send_request()
+    print(f"\nResponse: {response}\n")

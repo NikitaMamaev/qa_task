@@ -2,10 +2,6 @@
 Constants
 """
 
-LOCAL_IP = "192.168.0.3"
+URL = "http://localhost:5000"
 
-URL = f"http://{LOCAL_IP}:4000"
-
-API_HANDLER = "/subscriptions"
-
-LIST_LENGTH = 5
+API_HANDLER = "/api/v1/templates"
