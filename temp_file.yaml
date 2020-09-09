@@ -1,1 +1,3 @@
-123
+- id: "google_button"
+  label: "google"
+  link: "https://google.com"
