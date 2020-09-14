@@ -29,9 +29,7 @@ def yaml_dir(request):
     """
 
     print("\n---BEGIN!!!---\n")
-    print(os.path.isdir(YAML_DIR))
     if not os.path.isdir(YAML_DIR):
         os.mkdir(YAML_DIR)
-
 
     request.addfinalizer(remove_yaml_dir)
