@@ -1,7 +1,7 @@
 from utils.api_requests import send_request
 
 
-def test_test():
+def test_test(yaml_dir):
 
     payload = {
         'tmpl_id': 'autotest_id_1'
