@@ -1,35 +1,33 @@
 """
-Test fixtures
+Create directory for temporary yaml-files before testing and remove after
 """
 
 import os
 
 import pytest
 
-from settings import YAML_DIR
+import settings
 
 
 def remove_yaml_dir():
     """
-    Test fixture finalizer
+    Remove directory for temporary yaml-files
     """
 
-    if os.path.isdir(YAML_DIR):
-        for yaml_file in os.listdir(YAML_DIR):
-            os.unlink(os.path.join(YAML_DIR, yaml_file))
-        os.rmdir(YAML_DIR)
+    if os.path.exists(settings.YAML_DIR):
+        for yaml_file in os.listdir(settings.YAML_DIR):
+            os.unlink(os.path.join(settings.YAML_DIR, yaml_file))
 
-    print("\n---FINALE!!!---\n")
+        os.rmdir(settings.YAML_DIR)
 
 
 @pytest.fixture(scope='session')
 def yaml_dir(request):
     """
-    Test fixture finalizer
+    Create directory for temporary yaml-files
     """
 
-    print("\n---BEGIN!!!---\n")
-    if not os.path.isdir(YAML_DIR):
-        os.mkdir(YAML_DIR)
+    if not os.path.exists(settings.YAML_DIR):
+        os.mkdir(settings.YAML_DIR)
 
     request.addfinalizer(remove_yaml_dir)

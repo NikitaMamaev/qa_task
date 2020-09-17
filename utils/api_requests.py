@@ -18,6 +18,7 @@ urllib3.disable_warnings()
 def send_request(
     method: str = 'get',
     url: str = f"{settings.URL}{settings.API_HANDLER}",
+    handler: str = "",
     data: Optional[dict] = None,
     files = None,
 ) -> str:
@@ -25,6 +26,7 @@ def send_request(
     Send API-request to service
     :param method: request method: GET, POST, PUT or DELETE
     :param url: request url
+    :param handler: -----------------
     :param data: POST- or PUT-request data
     :param files: POST- or PUT-request files
     """
@@ -35,7 +37,7 @@ def send_request(
         raise ValueError(f'Unsupported method "{method}"')
 
     response = getattr(requests, method)(
-        url=url,
+        url=f'{url}/{handler}' if handler else url,
         data={'data': json.dumps(data)} if data else None,
         files={'file': files} if files else None
     )
